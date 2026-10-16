@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dct-moe"
+version = "1.0.0"
+description = "Frequency-domain grayscale medical image generation with sparse mixture-of-experts"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "torch>=2.1", "numpy>=1.24,<3", "Pillow>=10", "opencv-python-headless>=4.8",
+  "einops>=0.6", "accelerate>=1.0", "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+preprocess = ["nibabel>=5.1"]
+eval = ["torchvision>=0.16", "pytorch-fid>=0.3", "lpips>=0.1.4", "scipy>=1.10"]
+
+[project.scripts]
+dct-moe-train = "dct_moe.train:main"
+dct-moe-sample = "dct_moe.sample:main"
+dct-moe-evaluate = "dct_moe.evaluate:main"
+
+[tool.setuptools.packages.find]
+include = ["dct_moe*"]

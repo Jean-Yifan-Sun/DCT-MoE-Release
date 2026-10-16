@@ -1,0 +1,66 @@
+{
+  "name": "nih",
+  "seed": 1234,
+  "codec": {
+    "resolution": 256,
+    "block_size": 8,
+    "low_freqs": 16,
+    "bound": 1016.0
+  },
+  "model": {
+    "embed_dim": 768,
+    "depth": 16,
+    "num_heads": 12,
+    "mlp_ratio": 4,
+    "qkv_bias": false,
+    "mlp_time_embed": true,
+    "MoE": {
+      "depth": 1,
+      "num_experts": 4,
+      "router": "topk",
+      "top_k": 2,
+      "noise_eps": 0.01
+    }
+  },
+  "diffusion": {
+    "snr_scale": 4.0,
+    "entropy": [
+      6.43,
+      3.162,
+      2.664,
+      1.577,
+      1.599,
+      1.67,
+      1.236,
+      1.184,
+      1.188,
+      1.206,
+      1.047,
+      1.0,
+      0.999,
+      1.0,
+      1.004,
+      1.0
+    ],
+    "aux_loss_weight": 0.001
+  },
+  "train": {
+    "steps": 500000,
+    "batch_size": 512,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.03,
+    "betas": [
+      0.99,
+      0.99
+    ],
+    "warmup_steps": 5000,
+    "ema_rate": 0.9999,
+    "save_interval": 25000,
+    "log_interval": 100
+  },
+  "sample": {
+    "steps": 50,
+    "batch_size": 32,
+    "count": 50000
+  }
+}

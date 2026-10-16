@@ -1,0 +1,10 @@
+{
+  "reference_frame": "ED",
+  "label_value": null,
+  "normalization": "minmax_eps",
+  "invalid_crop": "skip",
+  "size": 96,
+  "normalization_epsilon": 1e-08,
+  "empty_slices": "skip",
+  "skip_constant": true
+}

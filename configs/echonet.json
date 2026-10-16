@@ -1,0 +1,62 @@
+{
+  "name": "echonet",
+  "seed": 1234,
+  "codec": {
+    "resolution": 112,
+    "block_size": 4,
+    "low_freqs": 12,
+    "bound": 512.0
+  },
+  "model": {
+    "embed_dim": 768,
+    "depth": 16,
+    "num_heads": 12,
+    "mlp_ratio": 4,
+    "qkv_bias": false,
+    "mlp_time_embed": true,
+    "MoE": {
+      "depth": 1,
+      "num_experts": 4,
+      "router": "topk",
+      "top_k": 2,
+      "noise_eps": 0.01
+    }
+  },
+  "diffusion": {
+    "snr_scale": 4.0,
+    "entropy": [
+      5.419,
+      2.769,
+      2.659,
+      1.88,
+      2.022,
+      1.575,
+      1.018,
+      1.338,
+      1.593,
+      1.484,
+      1.309,
+      1.163
+    ],
+    "aux_loss_weight": 0.001
+  },
+  "train": {
+    "steps": 500000,
+    "batch_size": 512,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.03,
+    "betas": [
+      0.99,
+      0.99
+    ],
+    "warmup_steps": 5000,
+    "ema_rate": 0.9999,
+    "save_interval": 25000,
+    "log_interval": 100
+  },
+  "sample": {
+    "steps": 50,
+    "batch_size": 32,
+    "count": 50000
+  }
+}
